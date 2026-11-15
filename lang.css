@@ -1,0 +1,124 @@
+/* ========================================================
+   LANGUAGE BUTTON + ARABIC / RTL SUPPORT
+   Paste at the END of style.css (or link as a second stylesheet)
+   ======================================================== */
+
+.lang-opt {
+  background: transparent;
+  border: none;
+  color: rgba(0, 212, 255, 0.5);
+  font-family: 'Cairo', monospace;
+  font-size: 12px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-opt:hover {
+  color: #00d4ff;
+}
+
+.lang-opt.active {
+  background: rgba(0, 212, 255, 0.18);
+  color: #ffffff;
+  border: 1px solid #00d4ff;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+/* Scroll hint text now comes from JS so it can be translated */
+.scroll-indicator::after {
+  content: var(--more-text, "MORE MATCHES BELOW");
+}
+
+/* ---------- Arabic typography ---------- */
+html[lang="ar"] body,
+html[lang="ar"] .search-box,
+html[lang="ar"] .toggle-btn,
+html[lang="ar"] .no-results-notice,
+html[lang="ar"] .num,
+html[lang="ar"] .scroll-indicator::after {
+  font-family: 'Cairo', 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Core Arabic font: Cairo 600 everywhere for crisp rendering */
+html[lang="ar"] body {
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  font-weight: 600;
+}
+
+/* Letter-spacing and uppercase break Arabic letter joining */
+html[lang="ar"] * {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Keep element symbols in Latin letters, same look as before */
+html[lang="ar"] strong,
+html[lang="ar"] .modal-symbol {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ---------- Keep the table and diagram layout left-to-right ---------- */
+html[dir="rtl"] table,
+html[dir="rtl"] .schematic-stage,
+html[dir="rtl"] .search-controls {
+  direction: ltr;
+}
+
+/* Arabic names are a little longer, so use a slightly larger font in the cells */
+html[lang="ar"] .name {
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* ---------- Popup text reads right-to-left ---------- */
+html[dir="rtl"] .node,
+html[dir="rtl"] .modal-body {
+  direction: rtl;
+}
+
+/* Callout alignment stays pointing toward the centre symbol */
+html[dir="rtl"] .left-group .node  { text-align: right; }
+html[dir="rtl"] .right-group .node { text-align: left; }
+
+html[lang="ar"] .node-text    { font-family: 'Cairo', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.65; }
+html[lang="ar"] .node-label   { font-family: 'Cairo', sans-serif; font-size: 12px; font-weight: 700; }
+html[lang="ar"] .modal-body li { font-family: 'Cairo', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.8; }
+html[lang="ar"] .modal-body h4 { font-family: 'Cairo', sans-serif; font-size: 13px;   font-weight: 700; }
+html[lang="ar"] .modal-name    { font-family: 'Cairo', sans-serif; font-size: 19px;   font-weight: 700; }
+html[lang="ar"] .modal-category { font-family: 'Cairo', sans-serif; font-size: 13px; font-weight: 700; }
+html[lang="ar"] .modal-num     { font-family: 'Cairo', sans-serif; font-size: 14px;   font-weight: 600; }
+
+/* Search bar & buttons */
+html[lang="ar"] .search-box   { font-family: 'Cairo', sans-serif; font-size: 14px; font-weight: 600; }
+html[lang="ar"] .toggle-btn   { font-family: 'Cairo', sans-serif; font-size: 12px; font-weight: 600; }
+html[lang="ar"] .trend-label  { font-family: 'Cairo', sans-serif; font-weight: 600; }
+html[lang="ar"] .trend-btn    { font-family: 'Cairo', sans-serif; font-size: 12px; font-weight: 600; }
+html[lang="ar"] .lg-end,
+html[lang="ar"] .lg-note      { font-family: 'Cairo', sans-serif; font-weight: 600; }
+
+/* Compare panel */
+html[lang="ar"] .compare-title  { font-family: 'Cairo', sans-serif; font-size: 14px; font-weight: 700; }
+html[lang="ar"] #compare-hint-text { font-family: 'Cairo', sans-serif; font-size: 13px; font-weight: 600; }
+html[lang="ar"] .compare-open-btn,
+html[lang="ar"] .compare-clear-btn { font-family: 'Cairo', sans-serif; font-size: 12px; font-weight: 600; }
+html[lang="ar"] .cmp-prop-label { font-family: 'Cairo', sans-serif; font-size: 12.5px; font-weight: 600; }
+html[lang="ar"] .cmp-unit       { font-family: 'Cairo', sans-serif; font-size: 10.5px; font-weight: 600; }
+html[lang="ar"] .cmp-el-name    { font-family: 'Cairo', sans-serif; font-size: 13px;   font-weight: 700; }
+html[lang="ar"] .cmp-el-cat     { font-family: 'Cairo', sans-serif; font-size: 10px;   font-weight: 700; }
+html[lang="ar"] .cmp-val-cell   { font-family: 'Cairo', sans-serif; font-weight: 700; }
+
+/* No-results notice */
+html[lang="ar"] .no-results-notice { font-family: 'Cairo', sans-serif; font-size: 14px; font-weight: 700; }
+
+/* Bullets flip to the right side in Arabic */
+html[dir="rtl"] .modal-body li {
+  padding-left: 0;
+  padding-right: 16px;
+}
+html[dir="rtl"] .modal-body li::before {
+  content: "◃";
+  left: auto;
+  right: 0;
+}
